@@ -4,6 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 import { pages, crumbLabels, MEDIA } from './pages.mjs';
+import { homeHtml, footerHtml as siteFooterHtml } from './site-content.mjs';
 
 const OUT = 'content';
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -231,8 +232,8 @@ function write(rel, html) {
 }
 
 fs.rmSync(OUT, { recursive: true, force: true });
-pages.forEach((p) => write(p.path, pageHtml(p)));
+pages.forEach((p) => write(p.path, p.home ? homeHtml() : pageHtml(p)));
 write('/en/about', aboutHtml);
 write('/nav', navHtml);
-write('/footer', footerHtml);
+write('/footer', siteFooterHtml());
 console.log(`Generated ${pages.length + 3} documents in ${OUT}/`);

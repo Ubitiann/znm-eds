@@ -12,6 +12,18 @@ function buildField([label, type = 'text', options = ''], i) {
   const id = idOf(label, i);
   const wrap = document.createElement('div');
   wrap.className = `cf-field cf-${type}`;
+  if (type === 'checkbox') {
+    const box = document.createElement('input');
+    box.type = 'checkbox';
+    box.id = id;
+    box.name = id;
+    box.required = true;
+    const text = document.createElement('label');
+    text.htmlFor = id;
+    text.textContent = label;
+    wrap.append(box, text);
+    return wrap;
+  }
   const lbl = document.createElement('label');
   lbl.htmlFor = id;
   lbl.textContent = `${label} *`;
@@ -56,7 +68,7 @@ export default function decorate(block) {
   const button = document.createElement('button');
   button.type = 'submit';
   button.className = 'button';
-  button.textContent = 'Send';
+  button.textContent = block.classList.contains('newsletter') ? 'Sign up' : 'Send';
   const status = document.createElement('p');
   status.className = 'cf-status';
   status.setAttribute('role', 'status');

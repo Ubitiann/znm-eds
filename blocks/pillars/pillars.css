@@ -5,13 +5,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0;
-  border-top: 1px solid #cfcfcf;
+  border-top: 1px solid var(--line);
 }
 
 .pillars li {
   position: relative;
   padding: 24px 16px 24px 0;
-  border-bottom: 1px solid #cfcfcf;
+  border-bottom: 1px solid var(--line);
   min-height: 96px;
 }
 
@@ -19,7 +19,8 @@
   display: block;
   text-transform: uppercase;
   font-size: 14px;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--dark-color);
   padding-right: 40px;
 }
 

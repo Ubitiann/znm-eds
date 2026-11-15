@@ -87,6 +87,7 @@ export const pages = [
   {
     path: '/en/experiences',
     h1: 'Experiences',
+    img: 'znm-r3/visit/exterior-image.jpg',
     intro: ['To further enrich your experience, book your events, exhibitions and tours prior to your museum visit.'],
     ...c('/en/event-calender', '/en/visit', '/en/explore'),
   },

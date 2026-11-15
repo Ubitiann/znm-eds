@@ -69,3 +69,106 @@
   color: #bbb;
   font-size: 14px;
 }
+
+/* newsletter variant (footer) */
+.contact-form.newsletter form {
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: none;
+}
+
+.contact-form.newsletter .cf-field {
+  position: relative;
+}
+
+.contact-form.newsletter label {
+  margin: 0;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #bdbdbd;
+}
+
+.contact-form.newsletter .cf-field:not(.cf-checkbox) label {
+  position: absolute;
+  left: 18px;
+  top: 24px;
+  pointer-events: none;
+}
+
+.contact-form.newsletter input:not([type='checkbox']) {
+  height: 70px;
+  border: 1px solid #c9c9c9;
+  padding: 24px 18px 0;
+  color: #fff;
+}
+
+.contact-form.newsletter .cf-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.contact-form.newsletter input[type='checkbox'] {
+  width: 26px;
+  height: 26px;
+  appearance: none;
+  border: 1px solid #c9c9c9;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.contact-form.newsletter input[type='checkbox']:checked {
+  background: #fff;
+}
+
+.contact-form.newsletter button.button {
+  grid-column: auto;
+  margin: 0;
+  height: 70px;
+  min-width: 190px;
+  justify-self: stretch;
+  background: #a9a9a9;
+  border: 0;
+  color: #222223;
+  gap: 20px;
+}
+
+@media (width >= 900px) {
+  .contact-form.newsletter form {
+    grid-template-columns: repeat(3, 1fr) 260px;
+    align-items: start;
+  }
+
+  .contact-form.newsletter .cf-checkbox {
+    grid-column: 1 / -1;
+    order: 5;
+  }
+
+  .contact-form.newsletter button.button {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: stretch;
+  }
+}
+
+.contact-form.newsletter button.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form.newsletter button.button::after {
+  content: '';
+  width: 56px;
+  height: 28px;
+  border-left: 1px solid #222223;
+  border-right: 1px solid #222223;
+  background: var(--arrow-right) center / 22px no-repeat;
+}
+
+.contact-form .cf-status:empty {
+  display: none;
+}
