@@ -6,3 +6,9 @@ package.json
 package-lock.json
 test/*
 sync-block-collection.sh
+
+tools/*
+content/*
+drafts/*
+ZNM-README.md
+SETUP.md

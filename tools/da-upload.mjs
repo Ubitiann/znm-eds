@@ -7,6 +7,12 @@
 import fs from 'fs';
 import path from 'path';
 
+try {
+  process.loadEnvFile('.env');
+} catch (e) {
+  // no .env file: fall back to real environment variables
+}
+
 const { DA_ORG, DA_SITE, DA_TOKEN } = process.env;
 const dry = process.argv.includes('--dry-run');
 if (!dry && (!DA_ORG || !DA_SITE || !DA_TOKEN)) {

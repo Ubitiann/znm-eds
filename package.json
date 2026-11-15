@@ -11,7 +11,8 @@
     "content": "node tools/generate-content.mjs",
     "drafts": "node tools/build-drafts.mjs",
     "dev": "npm run content && npm run drafts && aem up --html-folder drafts",
-    "da:upload": "node tools/da-upload.mjs"
+    "da:upload": "node tools/da-upload.mjs",
+    "setup:check": "node tools/setup-check.mjs"
   },
   "repository": {
     "type": "git",
