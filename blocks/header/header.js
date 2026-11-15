@@ -108,6 +108,11 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
+  // link classes are stripped from authored content, so tag the tool links by position
+  const toolLinks = [...nav.querySelectorAll('.nav-tools a')];
+  if (toolLinks[0]) toolLinks[0].classList.add('nav-search');
+  if (toolLinks[1]) toolLinks[1].classList.add('nav-tickets');
+
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
