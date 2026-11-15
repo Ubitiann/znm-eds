@@ -102,7 +102,7 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['brand', 'sections', 'tools'];
+  const classes = ['brand', 'sections', 'tools', 'topbar'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
@@ -153,8 +153,11 @@ export default async function decorate(block) {
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
+  const topbar = nav.querySelector('.nav-topbar');
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  if (topbar) navWrapper.append(topbar);
   navWrapper.append(nav);
   block.append(navWrapper);
 }

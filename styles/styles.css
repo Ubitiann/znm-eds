@@ -12,16 +12,16 @@
 
 :root {
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: #fff;
+  --light-color: #f4f2ef;
+  --dark-color: #1c1c1c;
+  --text-color: #1c1c1c;
+  --link-color: #1c1c1c;
+  --link-hover-color: #6f6f6f;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  --heading-font-family: "Helvetica Neue", helvetica, arial, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -38,6 +38,8 @@
 
   /* nav height */
   --nav-height: 64px;
+  --topbar-height: 32px;
+  --grey: #7a7a7a;
 }
 
 /* fallback fonts */
@@ -322,4 +324,102 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* ZNM theme */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  color: var(--grey);
+  font-size: clamp(48px, 9vw, 96px);
+  line-height: 1;
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  margin: 0 0 24px;
+}
+
+main > .section p {
+  max-width: 760px;
+}
+
+main .section.alt {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: 56px 0;
+}
+
+main .section.dark {
+  background-color: var(--dark-color);
+  color: #fff;
+  margin: 0;
+  padding: 56px 0;
+}
+
+main .section.dark h2 {
+  color: #fff;
+}
+
+main > .section p:has(> img),
+main > .section p:has(> picture) {
+  max-width: none;
+  margin: 0;
+}
+
+main .cards > ul {
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+}
+
+main .cards > ul > li {
+  padding: 8px 8px 16px;
+}
+
+/* section styles set through section-metadata */
+main .section.banner > div {
+  max-width: 1400px;
+}
+
+main .section.banner img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+main .section.hero-section {
+  margin: 0;
+}
+
+main .section.hero-section .hero {
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  padding: 64px 32px;
+}
+
+main .section.hero-section .hero h1 {
+  color: #fff;
+  font-size: clamp(32px, 5vw, 64px);
+  max-width: 1100px;
+  line-height: 1.1;
+}
+
+main .section.hero-section .hero > div,
+main .section.hero-section .hero > div > div {
+  width: 100%;
+}
+
+main .section.hero-section .hero picture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 65%), rgb(0 0 0 / 5%));
 }

@@ -10,6 +10,8 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -143,6 +145,22 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies authored section metadata (style: alt, dark, banner, ...) as classes on the
+ * section and removes the metadata block.
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('.section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    const { style } = readBlockConfig(meta);
+    if (section && style) {
+      style.split(',').forEach((s) => section.classList.add(toClassName(s.trim())));
+    }
+    (meta.parentElement.children.length === 1 ? meta.parentElement : meta).remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -152,6 +170,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateSectionMetadata(main);
   decorateButtons(main);
 }
 

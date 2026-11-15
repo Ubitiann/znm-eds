@@ -271,3 +271,139 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* ZNM header overrides */
+header {
+  height: auto;
+  min-height: calc(var(--nav-height) + var(--topbar-height));
+}
+
+header .nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+header .nav-topbar {
+  background: #1c1c1c;
+  color: #fff;
+  height: var(--topbar-height);
+  display: none;
+}
+
+header .nav-topbar ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 32px;
+  max-width: 1264px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+  font-size: 11px;
+}
+
+header .nav-topbar .default-content-wrapper {
+  height: 100%;
+}
+
+header .nav-topbar a:any-link {
+  color: #fff;
+}
+
+header .nav-brand img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+header nav .nav-sections ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav .nav-sections a:any-link {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #6b6b6b;
+}
+
+header nav .nav-sections a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+header nav .nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+header nav .nav-tools .nav-search {
+  font-size: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #6b6b6b;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+header nav .nav-tools .nav-tickets:any-link {
+  background: #808080;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 20px 36px;
+  display: inline-block;
+}
+
+header nav .nav-tools .nav-tickets:hover {
+  background: #1c1c1c;
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  header .nav-wrapper {
+    position: relative;
+  }
+
+  header .nav-topbar {
+    display: block;
+  }
+
+  header nav .nav-sections ul {
+    display: flex;
+    gap: 28px;
+  }
+
+  header nav {
+    padding: 0 32px;
+  }
+}
+
+header nav .nav-tools .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: var(--nav-height);
+}
+
+header nav .nav-tools p {
+  margin: 0;
+}
+
+header nav .nav-tools .nav-tickets:any-link {
+  padding: 0 36px;
+  line-height: var(--nav-height);
+}
+
+@media (width >= 900px) {
+  header nav .nav-tools {
+    align-self: stretch;
+  }
+}
