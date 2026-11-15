@@ -31,3 +31,7 @@ Note: `/en/index` is the home page; set `/` to redirect to `/en/` in the site co
   (alone in a paragraph); `decorateExternalImages()` in `scripts/scripts.js` turns them into images.
 - Preview/publish in bulk: https://tools.aem.live/tools/bulk/index.html?org=ubitiann&site=znm-eds
 - Site: https://main--znm-eds--ubitiann.aem.page/en/ (preview). Nothing has been published to `.aem.live` yet.
+- AEM strips `class` attributes from authored links, so style/behaviour must not depend on them (header tags its tool links in JS).
+- Code changes reach `.aem.live` through the CDN cache (up to 2h). To refresh immediately, POST `https://admin.hlx.page/code/ubitiann/znm-eds/main/*`
+  via https://tools.aem.live/tools/admin-edit/index.html, and hard-refresh your browser (it caches assets for 2h too).
+- Fonts: the original uses the paid "Basis Grotesque" family; this replica uses Inter from Google Fonts as the closest free match.
