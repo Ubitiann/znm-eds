@@ -10,18 +10,22 @@ async function buildCard(link) {
     if (!resp.ok) throw new Error(resp.status);
     const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
     const title = doc.querySelector('h1')?.textContent.trim() || link.textContent.trim();
-    const img = doc.querySelector('img');
+    const imgEl = doc.querySelector('img');
+    const imgLink = [...doc.querySelectorAll('a[href^="http"]')]
+      .find((a) => /\.(jpe?g|png|webp|gif|svg)$/i.test(new URL(a.href).pathname)
+        && a.textContent.trim() === a.getAttribute('href'));
+    const imgSrc = imgEl?.getAttribute('src') || imgLink?.getAttribute('href');
     const intro = [...doc.querySelectorAll('p')]
       .map((p) => p.textContent.trim())
       .find((t) => t.length > 40) || '';
     const a = document.createElement('a');
     a.href = url.pathname;
     a.className = 'page-cards-card';
-    if (img) {
+    if (imgSrc) {
       const media = document.createElement('div');
       media.className = 'page-cards-media';
       const image = document.createElement('img');
-      image.src = img.getAttribute('src');
+      image.src = imgSrc;
       image.alt = '';
       image.loading = 'lazy';
       media.append(image);

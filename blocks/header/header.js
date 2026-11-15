@@ -115,6 +115,16 @@ export default async function decorate(block) {
     brandLink.closest('.button-container').className = '';
   }
 
+  // the brand logo is authored as an image link; wrap it so it links home
+  const brandPicture = navBrand.querySelector('picture');
+  if (brandPicture && !brandPicture.closest('a')) {
+    const home = document.createElement('a');
+    home.href = '/en/';
+    home.setAttribute('aria-label', 'Zayed National Museum home');
+    brandPicture.replaceWith(home);
+    home.append(brandPicture);
+  }
+
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {

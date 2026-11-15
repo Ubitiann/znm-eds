@@ -144,6 +144,31 @@ function decorateButtons(main) {
   });
 }
 
+const IMAGE_LINK = /\.(jpe?g|png|webp|gif|svg)$/i;
+
+/**
+ * Turns links to external images (link text = the image URL) into <picture> elements.
+ * AEM only keeps images that live on its media bus, so externally hosted images are
+ * authored as plain links and decorated here.
+ * @param {Element} main The container element
+ */
+export function decorateExternalImages(main) {
+  main.querySelectorAll('a[href^="http"]').forEach((a) => {
+    const url = new URL(a.href);
+    if (!IMAGE_LINK.test(url.pathname) || a.closest('picture')) return;
+    if (a.textContent.trim() !== a.getAttribute('href')) return;
+    const picture = document.createElement('picture');
+    const img = document.createElement('img');
+    img.src = a.href;
+    img.alt = a.title || '';
+    img.loading = 'lazy';
+    picture.append(img);
+    const p = a.closest('p');
+    if (p && p.textContent.trim() === a.textContent.trim()) p.replaceChildren(picture);
+    else a.replaceWith(picture);
+  });
+}
+
 /**
  * Applies authored section metadata (style: alt, dark, banner, ...) as classes on the
  * section and removes the metadata block.
@@ -167,6 +192,7 @@ function decorateSectionMetadata(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
+  decorateExternalImages(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
