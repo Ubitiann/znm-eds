@@ -23,3 +23,11 @@ What only you can do (needs your GitHub / Adobe accounts), in order:
    `https://main--<repo>--<owner>.aem.page/en/index`.
 
 Note: `/en/index` is the home page; set `/` to redirect to `/en/` in the site config if you want the root URL to work.
+
+## Lessons from the first deployment
+- AEM org ids must be **lowercase** (`ubitiann`), in tools.aem.live and in DA paths.
+- Preview the home page as `.../en/` (not `.../en/index`); they are different preview paths.
+- External images cannot be `<img>` in AEM content (they become `about:error`). Author them as a link to the image URL
+  (alone in a paragraph); `decorateExternalImages()` in `scripts/scripts.js` turns them into images.
+- Preview/publish in bulk: https://tools.aem.live/tools/bulk/index.html?org=ubitiann&site=znm-eds
+- Site: https://main--znm-eds--ubitiann.aem.page/en/ (preview). Nothing has been published to `.aem.live` yet.
