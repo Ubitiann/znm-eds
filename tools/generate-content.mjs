@@ -57,7 +57,7 @@ function pageHtml(page) {
   if (page.home) {
     out.push(`<div>
   <div class="hero">
-    <div><div><p><a href="${MEDIA}${page.img}">${MEDIA}${page.img}</a></p><h1>${esc(page.h1)}</h1></div></div>
+    <div><div><p><a href="${MEDIA}${page.img}">${esc(page.h1)}</a></p><h1>${esc(page.h1)}</h1></div></div>
   </div>
 ${sectionMeta('hero-section')}
 </div>`);
@@ -68,7 +68,7 @@ ${breadcrumb(page)}
 </div>`);
     if (page.img) {
       out.push(`<div>
-  <p><a href="${MEDIA}${page.img}" title="${esc(page.h1)}">${MEDIA}${page.img}</a></p>
+  <p><a href="${MEDIA}${page.img}" title="${esc(page.h1)}">${esc(page.h1)}</a></p>
 ${sectionMeta('banner')}
 </div>`);
     }
@@ -96,7 +96,7 @@ const aboutHtml = `<div>
   <h1>About us</h1>
 </div>
 <div>
-  <p><a href="${MEDIA}znm/about/section-carousel/banner-16x9.jpg" title="Zayed National Museum">${MEDIA}znm/about/section-carousel/banner-16x9.jpg</a></p>
+  <p><a href="${MEDIA}znm/about/section-carousel/banner-16x9.jpg" title="Zayed National Museum">About Zayed National Museum</a></p>
 ${sectionMeta('banner')}
 </div>
 <div>
@@ -161,7 +161,7 @@ ${sectionMeta('alt')}
 `;
 
 const navHtml = `<div>
-  <p><a href="https://api.zayednationalmuseum.ae/-/media/feature/platform/header/logo/znmheaderlogo/logo.svg" title="Zayed National Museum">https://api.zayednationalmuseum.ae/-/media/feature/platform/header/logo/znmheaderlogo/logo.svg</a></p>
+  <p><a href="https://api.zayednationalmuseum.ae/-/media/feature/platform/header/logo/znmheaderlogo/logo.svg" title="Zayed National Museum">Zayed National Museum</a></p>
 </div>
 <div>
   <ul>

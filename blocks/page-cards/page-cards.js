@@ -13,9 +13,10 @@ async function buildCard(link) {
     const imgEl = doc.querySelector('img');
     const imgLink = [...doc.querySelectorAll('a[href^="http"]')]
       .find((a) => /\.(jpe?g|png|webp|gif|svg)$/i.test(new URL(a.href).pathname)
-        && a.textContent.trim() === a.getAttribute('href'));
+        && a.closest('p')?.textContent.trim() === a.textContent.trim());
     const imgSrc = imgEl?.getAttribute('src') || imgLink?.getAttribute('href');
     const intro = [...doc.querySelectorAll('p')]
+      .filter((p) => !p.querySelector('img') && p !== imgLink?.closest('p'))
       .map((p) => p.textContent.trim())
       .find((t) => t.length > 40) || '';
     const a = document.createElement('a');

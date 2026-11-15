@@ -156,15 +156,17 @@ export function decorateExternalImages(main) {
   main.querySelectorAll('a[href^="http"]').forEach((a) => {
     const url = new URL(a.href);
     if (!IMAGE_LINK.test(url.pathname) || a.closest('picture')) return;
-    if (a.textContent.trim() !== a.getAttribute('href')) return;
+    const p = a.closest('p');
+    const soleLink = p && p.textContent.trim() === a.textContent.trim();
+    const textIsUrl = a.textContent.trim() === a.getAttribute('href');
+    if (!soleLink && !textIsUrl) return;
     const picture = document.createElement('picture');
     const img = document.createElement('img');
     img.src = a.href;
-    img.alt = a.title || '';
+    img.alt = a.title || (textIsUrl ? '' : a.textContent.trim());
     img.loading = 'lazy';
     picture.append(img);
-    const p = a.closest('p');
-    if (p && p.textContent.trim() === a.textContent.trim()) p.replaceChildren(picture);
+    if (soleLink) p.replaceChildren(picture);
     else a.replaceWith(picture);
   });
 }
